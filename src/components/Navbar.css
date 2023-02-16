@@ -1,0 +1,13 @@
+
+.navbar { 
+    background-color: #d6ccc2 !important;
+}
+.navsec { 
+    display: flex; 
+    justify-content: flex-end;
+} 
+.navbar-nav{ 
+    display: flex;
+    width: 50%;
+    justify-content: space-evenly;
+}
