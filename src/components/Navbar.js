@@ -15,18 +15,21 @@ const Navbar = () => {
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <Link><img src={require("../assets/gymsquad.jpeg")} /></Link>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
+                
                 <div className="collapse navbar-collapse navsec" id="navbarNav">
                     <ul className="navbar-nav">
-                        <Link><li className="nav-item active">
+                        <Link to="/"><li className="nav-item active d-flex align-items-center">
                             <FontAwesomeIcon icon="house" />
+                            <span>Home</span>
                         </li></Link>
-                        <Link> <li className="nav-item">
+                        <Link to="/user"> <li className="nav-item d-flex align-items-center">
+                            
                             <FontAwesomeIcon icon="user" />
+                            <span>Login/Signup</span>
                         </li> </Link>
-                        <Link> <li><FontAwesomeIcon icon="magnifying-glass" />
+                        
+                        <Link to="/aboutus"> <li className="nav-item d-flex align-items-center"><FontAwesomeIcon icon="magnifying-glass" />
+                        <span>About Us</span>
                         </li></Link>
                     </ul>
                 </div>
