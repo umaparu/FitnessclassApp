@@ -1,0 +1,16 @@
+.jumbotron { 
+    background-image: url("../assets/trainer.jpeg");
+    height: 100vh;
+}  
+a { 
+    background-color: white !important;
+    color: black !important; 
+    border-color: white !important;
+    border-radius: 1.5rem !important;
+} 
+.plantext { 
+    color: white;
+} 
+.planbox { 
+    margin-top: 20%;
+}
