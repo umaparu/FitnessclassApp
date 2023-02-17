@@ -3,9 +3,9 @@
 
     return (
 
-        <>
+        <div className="wrapper">
             <Jumbotron/>
-        </>
+        </div>
     )
 }
 
