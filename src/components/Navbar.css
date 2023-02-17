@@ -1,22 +1,22 @@
 /* -----------------------navbar----------------------- */
-.navbar { 
-    background-color: #d6ccc2 !important;
-}
-.navsec { 
-    display: flex; 
+
+.navsec {
+    display: flex;
     justify-content: flex-end;
-} 
-.navbar-nav{ 
+}
+
+.navbar-nav {
     display: flex;
     width: 50%;
     justify-content: space-evenly;
-} 
-a { 
-    color: black;
-} 
-a:hover { 
-color: white;
 }
+
+a, a:hover {
+    color: black; 
+}
+ 
+
+
 
 li {
     padding: 20px;

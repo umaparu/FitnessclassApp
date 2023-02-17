@@ -1,9 +1,10 @@
-const Home = () => {
+ import Jumbotron from "./Jumbotron"
+ const Home = () => {
 
     return (
 
         <>
-            <p>Home</p>
+            <Jumbotron/>
         </>
     )
 }
