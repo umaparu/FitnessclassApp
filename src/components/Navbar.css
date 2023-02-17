@@ -27,6 +27,10 @@ li span {
     padding: 10px;
 }
 
+.wrapper .jumbotron {
+    margin: 0%;
+}
+
 
 @media (max-width:700px) {
     .navbar-nav {
