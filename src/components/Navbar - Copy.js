@@ -22,7 +22,7 @@ const Navbar = () => {
                             <FontAwesomeIcon icon="house" />
                             <span>Home</span>
                         </li></Link>
-                        <Link to="/login"> <li className="nav-item d-flex align-items-center py-0">
+                        <Link to="/user"> <li className="nav-item d-flex align-items-center py-0">
                             
                             <FontAwesomeIcon icon="user" />
                             <span>Login/Signup</span>

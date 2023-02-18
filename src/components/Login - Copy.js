@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "../components/Jumbotron.css";
 import React from 'react';
-//import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom/client';
 
 
 const USER_STORAGE_KEY="GYM_SQUAD_USERS";
@@ -19,7 +19,7 @@ function Login() {
    return (<LoginForm  />);
  }
 
-
+export default Login;
 
 class LoginForm extends React.Component {
 
@@ -34,11 +34,8 @@ class LoginForm extends React.Component {
     }
 
     handleSubmit(event) {
+        alert("jkjkjkjk");
         this.validateResponses(event);
-
-        let email1= event.target.inputEmail.value;
-        let password1= event.target.inputPassword.value;
-
         this.setState({isSubmitted: true});
         event.preventDefault();
     }
@@ -55,7 +52,7 @@ class LoginForm extends React.Component {
    <div className="jumbotron jumbotron-fluid ">
 
     <div id="reg-heading" className="container w-25  float-right">
-    <form onSubmit={this.handleSubmit}>
+    <form >
     <div className="form-row">
         <div className="form-group">
             <label className="text-light" htmlFor="inputEmail">Email Address</label>
@@ -68,7 +65,9 @@ class LoginForm extends React.Component {
             <input type="password" className="form-control" id="inputPassword" placeholder="Password" required/>
         </div>
     </div>
+    <div className="form-row">
     <button type="submit" className="btn btn-primary">Login</button>
+    </div>  
     </form>
     </div>
 
@@ -76,12 +75,10 @@ class LoginForm extends React.Component {
         <div className="planbox">
         <p className=" plantext"> New to the fitness? Or just tired of developing your own workout plan?</p>
         <p className=" plantext"> Click below to generate your own personalised plan!</p>
-        <Link role="button" className="btn btn-primary btn-lg" to="/user">Get Started</Link>
+        <Link to="/user"> <a className="btn btn-primary btn-lg" href="#" role="button">Get Started</a></Link>
         </div>
     </div>
 </div>
       );
     }
 }
-
-export default Login;
