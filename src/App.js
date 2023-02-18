@@ -7,6 +7,8 @@ import User from './components/User';
 import Navbar from './components/Navbar';
 import About from './components/About';
 
+import Logout from './components/Logout';
+
 function App() {
   return (
     <BrowserRouter>
@@ -16,7 +18,8 @@ function App() {
             <Route index element={<Home/>}/> 
             <Route path='user' element={<User/>}></Route>   
             <Route path='login' element={<Login/>}></Route> 
-            <Route path='aboutus' element={<About/>}></Route>                
+            <Route path='aboutus' element={<About/>}></Route>        
+            <Route path='logout' element={<Logout/>}></Route>            
         </Routes>
       </BrowserRouter>
   );
