@@ -11,30 +11,11 @@ else show user profile with options to change details
 const USER_STORAGE_KEY="GYM_SQUAD_USERS";
 
 function User() {
-   console.log(  localStorage.getItem(USER_STORAGE_KEY ));
+   //console.log(  localStorage.getItem(USER_STORAGE_KEY ));
   return (<UserForm  />);
 }
 
 export default User
-
-
-  /*
-class GymUser extends React.Component {
-    firstName="";
-    lastName="";
-    email="";
-    password="";
-
-constructor(firstName, lastName, email, password){
-    super();
-    this.firstName = firstName; 
-    this.lastName = lastName;
-    this.email = email;
-    this.password = password;
-  }
-
-}
-*/
 
 class UserForm extends React.Component {
 
@@ -51,7 +32,6 @@ class UserForm extends React.Component {
     */
 
     validateResponses(event) {
-
         return ;
     }
 
@@ -102,7 +82,7 @@ class UserForm extends React.Component {
             return(
       <p>User registration successful. Please login.</p>);
         } else 
-      return (
+            return (
         <div id="register-user">
             <div id="reg-heading" className="container w-50 overflow-auto"> 
             <div className="text-center"> <h1> New User Registration </h1></div>
