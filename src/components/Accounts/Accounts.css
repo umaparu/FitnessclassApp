@@ -1,0 +1,87 @@
+
+
+.profile,
+.workout-plan {
+    border-radius: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.user-icon {
+    width: 50%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+}
+
+
+.profile {
+    height: 100%;
+    width: 37.5%;
+    background-color: white;
+}
+
+.workout-plan {
+    height: 100%;
+    width: 57.5%;
+    background-color: white;
+}
+
+.profile {
+    float: left;
+}
+
+.profile-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20%;
+
+
+}
+
+.profile p {
+    border-bottom: 1px solid black;
+}
+
+.workout-plan {
+    float: right;
+} 
+
+@media only screen and (min-width: 900px) { 
+    .account {
+        height: 70vh;
+        width: 70vw;
+        background-color: rgb(229, 228, 226, 0.5);
+        margin: auto;
+        padding: 2.5%;
+        border-radius: 20px;
+    }
+
+}
+
+@media only screen and (min-width: 600px) and (max-width: 899px) { 
+    .account {
+        height: 60vh;
+        width: 80vw;
+        background-color: rgb(229, 228, 226, 0.5);
+        margin: auto;
+        padding: 2.5%;
+        border-radius: 20px;
+    }
+} 
+
+@media only screen and (min-width: 50px) and (max-width: 599px) { 
+    .account {
+        height: 40vh;
+        width: 90vw;
+        background-color: rgb(229, 228, 226, 0.5);
+        margin: auto;
+        padding: 2.5%;
+        border-radius: 20px;
+    }
+}

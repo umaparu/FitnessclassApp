@@ -1,4 +1,4 @@
- import Jumbotron from "./Jumbotron"
+ import Jumbotron from "./Jumbotron/Jumbotron"
  const Home = () => {
 
     return (
