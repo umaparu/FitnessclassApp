@@ -25,12 +25,12 @@ class UserForm extends React.Component {
     constructor(props) {
       super(props);
      // this.state = {isSubmitted: false};
-
+     this.userFound = false;
      this.state = {isSubmitted: false,
         error: null,
         isLoaded: false,
         items: []
-    };
+         };
 
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleClick = this.handleClick.bind(this);
@@ -52,16 +52,15 @@ class UserForm extends React.Component {
     // HAndle clicks on Activity radio buttons. This will display sample activities from API-NINJA website
     handleClick(event) {
         let checkVal= event.target.value;
-        console.log(event.target.value);
+        //console.log(event.target.value);
         if (event.target.type=="checkbox") {
-
             this.getActivitites(checkVal);
         }
         //console.log(event.target.type);
 
       }
 
-
+    // Handle API Call and response
     async getActivitites(actType){
         
 		let URL = 'https://api.api-ninjas.com/v1/exercises?type='+ actType;
@@ -78,7 +77,7 @@ class UserForm extends React.Component {
             let actVal = "<div class='container'>";
             for (let i=0; i< 5; i++) {
                 actVal = actVal + "<div class='row'><div class='col-md'>" +result[i].name + "</div><div class='col-md'>" +
-                 result[i].difficulty + "</div> </div>";
+                result[i].difficulty + "</div> </div>";
             }
             actVal = actVal + "</div>";
             //console.log(actVal);
@@ -96,11 +95,39 @@ class UserForm extends React.Component {
             });
           }
         )
-
-       // console.log(this.state.items);
 	}
     
+    // Search if user exists then login
+    searchUser(userList, email1, password1) {
+        let userStatus = false;
+        if (userList != null) {
 
+            let strArr = userList.split("},");
+            let usrObj;
+
+            for (let i=0; i<strArr.length; i++ ) {
+                let str = strArr[i];
+                let lcaseStr=str.toLowerCase();
+                
+                //console.log(lcaseStr);
+                let x= lcaseStr.indexOf(email1.toLowerCase().trim());
+                if (x !=-1) {
+                    //this.status= USER_FOUND;
+                    userStatus=true
+
+                } else {
+                    //this.status= USER_NOT_FOUND;
+                    userStatus=false
+                }
+            }
+        } 
+
+        console.log(userStatus);
+        return userStatus;
+    }   
+
+
+    // Handle the Form Submit event
     handleSubmit(event) {
         this.validateResponses(event);
         let actArr=[];
@@ -108,19 +135,19 @@ class UserForm extends React.Component {
         for (let i=0; i<7; i++) {
             let checkId = 'chk'+i;
            // console.log(checkId);
-
             if ( document.getElementById(checkId).checked==true)
             actArr.push(i);
-            
         }
-        console.log(actArr);
+
+        let email1= event.target.inputEmail.value;
+        let password1= event.target.inputPassword.value;
 
         let gUser = {
             "title": event.target.inputTitle.value, 
             "firstName": event.target.inputFirstName.value, 
             "lastName":event.target.inputLastName.value, 
-            "email": event.target.inputEmail.value, 
-            "password": event.target.inputPassword.value,
+            "email": email1, 
+            "password": password1,
             "age": event.target.inputAge.value,
             "postCode": event.target.inputPostCode.value,
             "agreeTerms": event.target.termsCheck.value,
@@ -129,21 +156,22 @@ class UserForm extends React.Component {
 
         //localStorage.removeItem(USER_STORAGE_KEY);
 
-       
         let userList=localStorage.getItem(USER_STORAGE_KEY);
-        console.log(typeof userList);
-        console.log(userList);
 
         if (userList == null)
         {
             let usrArr = [JSON.stringify(gUser)];
             localStorage.setItem(USER_STORAGE_KEY, usrArr ); 
         } else {
-            let usrArr = [userList, JSON.stringify(gUser) ];
-               // console.log(usrArr);
+            this.userFound = this.searchUser(userList, email1, password1);
+            if (this.userFound == false) {
+                let usrArr = [userList, JSON.stringify(gUser) ];
+                // console.log(usrArr);
                 localStorage.removeItem(USER_STORAGE_KEY);
                 localStorage.setItem(USER_STORAGE_KEY, usrArr ); 
-           // console.log(typeof userList);
+                // console.log(typeof userList);
+            }
+
         }
         this.setState({isSubmitted: true});
         event.preventDefault();
@@ -161,9 +189,11 @@ class UserForm extends React.Component {
             );
 
         if (this.state.isSubmitted) {
-           
-            return(
-      <p>User registration successful. Please login.</p>);
+            let str="User registration successful. Please login.";
+            if (this.userFound == true) {
+                str= "User already exists. Please login.";
+            }
+            return(str);
         } else 
       return (
         <div id="register-user">
