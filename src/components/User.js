@@ -35,11 +35,7 @@ class UserForm extends React.Component {
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleClick = this.handleClick.bind(this);
       this.activityDetails="";
-     // this.activities =[];
-
-     // this.getActivitites();
     }
-
 
     /*
     handleChange(event) {
@@ -47,61 +43,28 @@ class UserForm extends React.Component {
     }
     */
 
+    // TODO - Validate user form responses
     validateResponses(event) {
 
         return ;
     }
-
+    
+    // HAndle clicks on Activity radio buttons. This will display sample activities from API-NINJA website
     handleClick(event) {
         let checkVal= event.target.value;
         console.log(event.target.value);
-        //alert("ghghg");
         if (event.target.type=="checkbox") {
 
             this.getActivitites(checkVal);
-
         }
-        console.log(event.target.type);
+        //console.log(event.target.type);
 
       }
-    
-      /*
-    getActivitites(actType){
 
-        //let URL = 'https://api.api-ninjas.com/v1/exercises';
-        //let URL = 'https://api.api-ninjas.com/v1/exercises?difficulty=expert';
-		let URL = 'https://api.api-ninjas.com/v1/exercises?type='+ actType;;
-		
-		fetch(URL, {
-		method: 'GET',
-		headers: {
-			'X-Api-Key': NINJA_KEY
-		},	
-		})
-		.then(response => {
-            const obj = response.json();
-            console.log(obj);
-            alert(obj[0]);
-            let actVal = "<ul class='list-group'>";
-            //for (let i=0; i< response.; i++) {
-              // console.log( "gghhgh");
-           // }
-
-            actVal = actVal + "</ul>";
-            document.getElementById("activityDetails").innerHTML = this.activityDetails;
-
-        })
-            
-           // response.json()) 
-		.then(response => console.log(response))
-		.catch(err => console.error(err));
-	}
-    */
 
     async getActivitites(actType){
         
 		let URL = 'https://api.api-ninjas.com/v1/exercises?type='+ actType;
-
 		fetch(URL, {
             method: 'GET',
             headers: {
@@ -118,7 +81,7 @@ class UserForm extends React.Component {
                  result[i].difficulty + "</div> </div>";
             }
             actVal = actVal + "</div>";
-            console.log(actVal);
+            //console.log(actVal);
             document.getElementById("activityDetails").innerHTML = actVal;
 
             this.setState({
@@ -134,7 +97,7 @@ class UserForm extends React.Component {
           }
         )
 
-        console.log(this.state.items);
+       // console.log(this.state.items);
 	}
     
 
@@ -144,7 +107,7 @@ class UserForm extends React.Component {
 
         for (let i=0; i<7; i++) {
             let checkId = 'chk'+i;
-            console.log(checkId);
+           // console.log(checkId);
 
             if ( document.getElementById(checkId).checked==true)
             actArr.push(i);
@@ -180,12 +143,8 @@ class UserForm extends React.Component {
                // console.log(usrArr);
                 localStorage.removeItem(USER_STORAGE_KEY);
                 localStorage.setItem(USER_STORAGE_KEY, usrArr ); 
-           
            // console.log(typeof userList);
         }
-
-
-
         this.setState({isSubmitted: true});
         event.preventDefault();
     }
@@ -201,7 +160,6 @@ class UserForm extends React.Component {
             </div>
             );
 
-       // alert('state value: ' + this.state.isSubmitted);
         if (this.state.isSubmitted) {
            
             return(
@@ -237,8 +195,6 @@ class UserForm extends React.Component {
                         <input type="text" className="form-control" id="inputAge"/>
                     </div>
                 </div>
-
-
                 <div className="form-group">
                     <label htmlFor="inputAddress">Address</label>
                     <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St"/>
@@ -247,7 +203,6 @@ class UserForm extends React.Component {
                     <label htmlFor="inputAddress2">Address 2</label>
                     <input type="text" className="form-control" id="inputAddress2" placeholder="Locality"/>
                 </div>    
-            
                 <div className="form-row">
                     <div className="form-group col-md-7">
                         <label htmlFor="inputCity">City</label>
@@ -258,7 +213,6 @@ class UserForm extends React.Component {
                         <input type="text" className="form-control" id="inputPostCode"/>
                     </div>
                 </div>
-
                 <div className="form-row">
                     <div className="form-group col-md-4">
                         <label htmlFor="inputSelectActivity">Select all interested activities</label>
@@ -276,7 +230,6 @@ class UserForm extends React.Component {
                     <label htmlFor="inputPassword">Password</label>
                     <input type="password" className="form-control" id="inputPassword" placeholder="Password" required/>
                 </div>
-                           
                 <div className="form-group">
                     <div className="form-check">
                         <input className="form-check-input" type="checkbox" id="termsCheck" required/>
