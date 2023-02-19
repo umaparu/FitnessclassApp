@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { activities } from './Activities.js';
 
 
 /* If user is not registered show registration page
@@ -9,40 +10,36 @@ else show user profile with options to change details
 */
 
 const USER_STORAGE_KEY="GYM_SQUAD_USERS";
+const NINJA_KEY="XZJKWu8P021vYpDM4ulaHA==bu8C9RGKvivdGFg3";
 
 function User() {
+   //localStorage.removeItem(USER_STORAGE_KEY);
    // console.log(  localStorage.getItem(USER_STORAGE_KEY ));
   return (<UserForm  />);
 }
 
 export default User
 
-
-  /*
-class GymUser extends React.Component {
-    firstName="";
-    lastName="";
-    email="";
-    password="";
-
-constructor(firstName, lastName, email, password){
-    super();
-    this.firstName = firstName; 
-    this.lastName = lastName;
-    this.email = email;
-    this.password = password;
-  }
-
-}
-*/
-
 class UserForm extends React.Component {
 
     constructor(props) {
       super(props);
-      this.state = {isSubmitted: false};
+     // this.state = {isSubmitted: false};
+
+     this.state = {isSubmitted: false,
+        error: null,
+        isLoaded: false,
+        items: []
+    };
+
       this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleClick = this.handleClick.bind(this);
+      this.activityDetails="";
+     // this.activities =[];
+
+     // this.getActivitites();
     }
+
 
     /*
     handleChange(event) {
@@ -55,8 +52,106 @@ class UserForm extends React.Component {
         return ;
     }
 
+    handleClick(event) {
+        let checkVal= event.target.value;
+        console.log(event.target.value);
+        //alert("ghghg");
+        if (event.target.type=="checkbox") {
+
+            this.getActivitites(checkVal);
+
+        }
+        console.log(event.target.type);
+
+      }
+    
+      /*
+    getActivitites(actType){
+
+        //let URL = 'https://api.api-ninjas.com/v1/exercises';
+        //let URL = 'https://api.api-ninjas.com/v1/exercises?difficulty=expert';
+		let URL = 'https://api.api-ninjas.com/v1/exercises?type='+ actType;;
+		
+		fetch(URL, {
+		method: 'GET',
+		headers: {
+			'X-Api-Key': NINJA_KEY
+		},	
+		})
+		.then(response => {
+            const obj = response.json();
+            console.log(obj);
+            alert(obj[0]);
+            let actVal = "<ul class='list-group'>";
+            //for (let i=0; i< response.; i++) {
+              // console.log( "gghhgh");
+           // }
+
+            actVal = actVal + "</ul>";
+            document.getElementById("activityDetails").innerHTML = this.activityDetails;
+
+        })
+            
+           // response.json()) 
+		.then(response => console.log(response))
+		.catch(err => console.error(err));
+	}
+    */
+
+    async getActivitites(actType){
+        
+		let URL = 'https://api.api-ninjas.com/v1/exercises?type='+ actType;
+
+		fetch(URL, {
+            method: 'GET',
+            headers: {
+                'X-Api-Key': NINJA_KEY
+            },	
+            })
+        .then(res => res.json())
+        .then(
+          (result) => {
+           // console.log(result[0]);
+            let actVal = "<div class='container'>";
+            for (let i=0; i< 5; i++) {
+                actVal = actVal + "<div class='row'><div class='col-md'>" +result[i].name + "</div><div class='col-md'>" +
+                 result[i].difficulty + "</div> </div>";
+            }
+            actVal = actVal + "</div>";
+            console.log(actVal);
+            document.getElementById("activityDetails").innerHTML = actVal;
+
+            this.setState({
+              isLoaded: true,
+              items: result.items
+            });
+          },
+          (error) => {
+            this.setState({
+              isLoaded: true,
+              error
+            });
+          }
+        )
+
+        console.log(this.state.items);
+	}
+    
+
     handleSubmit(event) {
         this.validateResponses(event);
+        let actArr=[];
+
+        for (let i=0; i<7; i++) {
+            let checkId = 'chk'+i;
+            console.log(checkId);
+
+            if ( document.getElementById(checkId).checked==true)
+            actArr.push(i);
+            
+        }
+        console.log(actArr);
+
         let gUser = {
             "title": event.target.inputTitle.value, 
             "firstName": event.target.inputFirstName.value, 
@@ -65,7 +160,8 @@ class UserForm extends React.Component {
             "password": event.target.inputPassword.value,
             "age": event.target.inputAge.value,
             "postCode": event.target.inputPostCode.value,
-            "agreeTerms": event.target.termsCheck.value
+            "agreeTerms": event.target.termsCheck.value,
+            "activities": actArr
         }
 
         //localStorage.removeItem(USER_STORAGE_KEY);
@@ -96,6 +192,15 @@ class UserForm extends React.Component {
       
  
     render() {
+        const activityListItems = activities.map(activity => 
+            <div className="form-check">
+            <input className="form-check-input" type="checkbox" onClick={this.handleClick} value={activity.name} id={'chk' +activity.id}/>
+            <label className="form-check-label" htmlFor={'chk' +activity.id}>
+            {activity.name}
+            </label>
+            </div>
+            );
+
        // alert('state value: ' + this.state.isSubmitted);
         if (this.state.isSubmitted) {
            
@@ -153,11 +258,25 @@ class UserForm extends React.Component {
                         <input type="text" className="form-control" id="inputPostCode"/>
                     </div>
                 </div>
+
+                <div className="form-row">
+                    <div className="form-group col-md-4">
+                        <label htmlFor="inputSelectActivity">Select all interested activities</label>
+                        <div className="form-group col-md-2">
+                            {activityListItems}
+                        </div>
+                    </div>
+                    <div className="form-group col-md-5 border ">
+                        <div id="activityDetails"></div>
+                            {this.activityDetails}
+                            
+                    </div>
+                </div>
                 <div className="form-group">
                     <label htmlFor="inputPassword">Password</label>
                     <input type="password" className="form-control" id="inputPassword" placeholder="Password" required/>
                 </div>
-
+                           
                 <div className="form-group">
                     <div className="form-check">
                         <input className="form-check-input" type="checkbox" id="termsCheck" required/>
@@ -173,4 +292,3 @@ class UserForm extends React.Component {
       );
     }
 }
-  
