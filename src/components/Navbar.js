@@ -8,8 +8,29 @@ import styles from "../components/Navbar.css";
 library.add(faUser, faHouse, faDumbbell);
 
 
+const USER_LOGGED_IN ="USER_LOGGED_IN";
+const USER_OBJECT = "USER_OBJECT";
+
+let usrObj = window.sessionStorage.getItem(USER_OBJECT );
 
 const Navbar = () => {
+
+    
+   // let usrObj = window.sessionStorage.getItem(USER_OBJECT );
+   
+
+    let userText;
+
+    if (usrObj != null) {
+       // console.log(usrObj);
+        let usrObj1 = JSON.parse(usrObj);
+        console.log(usrObj1);
+        userText = usrObj1.firstname; 
+    } else {
+        userText = "Login/Signup";
+    }
+
+
     return (
 
         <div>
@@ -25,12 +46,14 @@ const Navbar = () => {
                         <Link to="/login"> <li className="nav-item d-flex align-items-center py-0">
                             
                             <FontAwesomeIcon icon="user" />
-                            <span>Login/Signup</span>
+                            <span>{userText}</span>
                         </li> </Link>
                         
                         <Link to="/aboutus"> <li className="nav-item d-flex align-items-center py-0"><FontAwesomeIcon icon="dumbbell" />
                         <span>About Us</span>
                         </li></Link>
+
+                        <LogoutText />
                     </ul>
                 </div>
             </nav>
@@ -40,3 +63,16 @@ const Navbar = () => {
 }
 
 export default Navbar
+
+function LogoutText() {
+    if (usrObj != null) {
+    {
+            return(
+                <Link to="/logout"> <li className="nav-item d-flex align-items-center py-0">
+                    <span>Logout</span></li></Link> );
+    } 
+    return;
+
+
+}
+}
