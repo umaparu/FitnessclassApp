@@ -4,7 +4,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faHouse } from '@fortawesome/free-solid-svg-icons';
 import { faDumbbell } from '@fortawesome/free-solid-svg-icons';
-import styles from "../components/Navbar.css";
+import styles from "./Navbar.css";
 library.add(faUser, faHouse, faDumbbell);
 
 
@@ -35,7 +35,7 @@ const Navbar = () => {
 
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark shadow-5-strong py-0 ">
-                <Link><img src={require("../assets/gsicon.jpeg")} /></Link>
+                <Link><img src={require("../../assets/gsicon.jpeg")} /></Link>
                 
                 <div className="collapse navbar-collapse navsec " id="navbarNav">
                     <ul className="navbar-nav">
