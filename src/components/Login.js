@@ -24,7 +24,7 @@ const Login = () => {
 */
 
 function Login() {
-   //  console.log(  localStorage.getItem(USER_STORAGE_KEY ));
+     console.log(  localStorage.getItem(USER_STORAGE_KEY ));
   // window.sessionStorage.removeItem(USER_OBJECT );
    return (<LoginForm  />);
  }
@@ -49,19 +49,13 @@ class LoginForm extends React.Component {
 
     }
 
+    // TODO - validate the responses
     validateResponses(event) {
         return ;
     }
 
-    handleSubmit(event) {
-        this.validateResponses(event);
-        alertMsg="";
-
-        let email1= event.target.inputEmail.value;
-        let password1= event.target.inputPassword.value;
-
-        let userList=localStorage.getItem(USER_STORAGE_KEY);
-   
+    // Search if user exists then login
+    searchUser(userList, email1, password1) {
         if (userList != null) {
 
             let strArr = userList.split("},");
@@ -83,7 +77,6 @@ class LoginForm extends React.Component {
                     } 
                     usrObj = JSON.parse(lcaseStr);
                    console.log(usrObj);
-
                     if (password1.trim() == usrObj.password.trim()) {
                         this.status= USER_LOGGED_IN;
                         window.sessionStorage.setItem(USER_OBJECT, JSON.stringify(usrObj));
@@ -93,18 +86,27 @@ class LoginForm extends React.Component {
                         alertMsg = "Please enter correct password..";
                         //alert("Wrong password");
                     }
+                } else {
+                    this.status= USER_NOT_FOUND;
+                    alertMsg = "User not registered..";
                 }
             }
-
-
-
-        // let usrObj=JSON.parse(userList);
-        // console.log(typeof usrObj);
-            console.log(strArr, email1, password1);
+           // console.log(strArr, email1, password1);
         } else {
             alert("NO REGISTERED USERS....");
         }
+    }
 
+    // Handle the Form SUbmit
+    handleSubmit(event) {
+        this.validateResponses(event);
+        alertMsg="";
+
+        let email1= event.target.inputEmail.value;
+        let password1= event.target.inputPassword.value;
+
+        let userList=localStorage.getItem(USER_STORAGE_KEY);
+        this.searchUser(userList, email1, password1);
 
         this.setState({isSubmitted: true});
         event.preventDefault();
