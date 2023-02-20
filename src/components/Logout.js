@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom";
 
-
-const USER_OBJECT = "USER_OBJECT";
-
 function Logout() {
 
-  let usrObj = window.sessionStorage.getItem(USER_OBJECT );
-  console.log(usrObj);
-  window.sessionStorage.removeItem(USER_OBJECT );
-  console.log("AFTER" + usrObj);
+  const handleLogout = () => {
+    localStorage.clear("login");
+    window.location.reload()
+  }
+
   return (
-  
-  <p>Logged out</p>);
+    <>
+    <button onClick={handleLogout} className="logout">LogOut</button>
+    </>
+  );
 }
 
 export default Logout;
