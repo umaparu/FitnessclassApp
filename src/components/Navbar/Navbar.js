@@ -5,29 +5,26 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faHouse } from '@fortawesome/free-solid-svg-icons';
 import { faDumbbell } from '@fortawesome/free-solid-svg-icons';
 import styles from "./Navbar.css";
+import Logout from "../Logout";
+import { useState } from "react";
 library.add(faUser, faHouse, faDumbbell);
 
 
-const USER_LOGGED_IN ="USER_LOGGED_IN";
-const USER_OBJECT = "USER_OBJECT";
-
-let usrObj = window.sessionStorage.getItem(USER_OBJECT );
 
 const Navbar = () => {
+    
+    let checkLoggedIn = JSON.parse(localStorage.getItem("login")) 
 
     
-   // let usrObj = window.sessionStorage.getItem(USER_OBJECT );
-   
 
-    let userText;
+    let usrObj = JSON.parse(localStorage.getItem('user')) 
 
-    if (usrObj != null) {
-       // console.log(usrObj);
-        let usrObj1 = JSON.parse(usrObj);
-        console.log(usrObj1);
-        userText = usrObj1.firstname; 
-    } else {
-        userText = "Login/Signup";
+
+    let[isLogged, setLoggedIn] = useState(checkLoggedIn);
+
+    const handleLogout = () => {
+        localStorage.clear("login");
+        setLoggedIn(false);
     }
 
 
@@ -43,17 +40,21 @@ const Navbar = () => {
                             <FontAwesomeIcon icon="house" />
                             <span>Home</span>
                         </li></Link>
-                        <Link to="/login"> <li className="nav-item d-flex align-items-center py-0">
+                        {checkLoggedIn ? <Link to="/user"> <li className="nav-item d-flex align-items-center py-0">
                             
                             <FontAwesomeIcon icon="user" />
-                            <span>{userText}</span>
-                        </li> </Link>
+                            <span>{usrObj.name}</span>
+                        </li> </Link> : <Link to="/login"> <li className="nav-item d-flex align-items-center py-0">
+                            
+                            <FontAwesomeIcon icon="user" />
+                            <span>login/signup</span>
+                        </li> </Link>}
+                        
                         
                         <Link to="/aboutus"> <li className="nav-item d-flex align-items-center py-0"><FontAwesomeIcon icon="dumbbell" />
                         <span>About Us</span>
                         </li></Link>
-
-                        <LogoutText />
+                        {isLogged ? <Logout/> : ""}
                     </ul>
                 </div>
             </nav>
@@ -63,16 +64,3 @@ const Navbar = () => {
 }
 
 export default Navbar
-
-function LogoutText() {
-    if (usrObj != null) {
-    {
-            return(
-                <Link to="/logout"> <li className="nav-item d-flex align-items-center py-0">
-                    <span>Logout</span></li></Link> );
-    } 
-    return;
-
-
-}
-}
