@@ -1,22 +1,22 @@
 /* -----------------------navbar----------------------- */
-.navbar { 
-    background-color: #d6ccc2 !important;
-}
-.navsec { 
-    display: flex; 
+
+.navsec {
+    display: flex;
     justify-content: flex-end;
-} 
-.navbar-nav{ 
+}
+
+.navbar-nav {
     display: flex;
     width: 50%;
     justify-content: space-evenly;
-} 
-a { 
-    color: black;
-} 
-a:hover { 
-color: white;
 }
+
+a, a:hover {
+    color: black; 
+}
+ 
+
+
 
 li {
     padding: 20px;
@@ -27,9 +27,24 @@ li span {
     padding: 10px;
 }
 
+.wrapper .jumbotron {
+    margin: 0%;
+}
+
 
 @media (max-width:700px) {
     .navbar-nav {
         width: 100%;
     }
+}
+
+
+.logout {
+    width: 65px;
+    font-size: 16px;
+    height: 50px;
+    border: none;
+    background-color: green;
+    align-self: center;
+    color: white;
 }

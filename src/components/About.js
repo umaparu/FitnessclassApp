@@ -1,9 +1,12 @@
+import Accounts from "./Accounts/Accounts"
+
+
 const About = () => {
 
     return (
 
         <>
-            <p>About</p>
+            <div> <Accounts/> </div>
         </>
     )
 }

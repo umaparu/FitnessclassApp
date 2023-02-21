@@ -1,10 +1,11 @@
-const Home = () => {
+ import Jumbotron from "./Jumbotron/Jumbotron"
+ const Home = () => {
 
     return (
 
-        <>
-            <p>Home</p>
-        </>
+        <div className="wrapper">
+            <Jumbotron/>
+        </div>
     )
 }
 
