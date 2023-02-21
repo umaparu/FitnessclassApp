@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "exercise" : "cardio",
+        "exercise_image": "mypractise/src/Images/Cardio.jpg"
+    },
+    {
+        "id": 2,
+        "exercise" : "olympic_weightlifting",
+        "exercise_image": "mypractise/src/Images/Weightlifting.jpg"
+    },
+    {
+        "id": 3,
+        "exercise" : "strength",
+        "exercise_image": "mypractise/src/Images/Strength.jpg"
+    },
+    {
+        "id": 4,
+        "exercise" : "stretching",
+        "exercise_image": "mypractise/src/Images/Stretching.jpg"
+    },
+    {
+        "id": 5,
+        "exercise" : "plyometrics",
+        "exercise_image": "mypractise/src/Images/Pylometrics.jpg"
+    },
+    {
+        "id": 6,
+        "exercise" : "powerlifting",
+        "exercise_image": "mypractise/src/Images/PowerLifting.jpg"
+    }
+]
