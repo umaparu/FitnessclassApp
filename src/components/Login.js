@@ -66,7 +66,7 @@ const Login = () => {
     }
 
     return (
-        <div>
+        <div className="m-3 styling">
             {isSignedUp ? <div>
             <h2>Sign Up</h2>
             <form  className="d-flex flex-column">

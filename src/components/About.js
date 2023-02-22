@@ -1,4 +1,7 @@
-import Accounts from "./Accounts/Accounts"
+import Instructors from "./Instructors";
+import InstructorHeader from "./InstructorHeader";
+import instructors from "../instructors.json";
+import "./Instructors.css";
 
 
 const About = () => {
@@ -6,7 +9,19 @@ const About = () => {
     return (
 
         <>
-            <div> <Accounts/> </div>
+            <InstructorHeader />
+            <div className="d-flex justify-content-around trainers">
+            {
+                instructors.map(instructor => (
+                    <Instructors
+                        id={instructor.id}
+                        name={instructor.name}
+                        image={instructor.image}
+                        speciality={instructor.speciality}
+                        muscles={instructor.muscles}
+                    />
+                ))}
+                </div>
         </>
     )
 }
