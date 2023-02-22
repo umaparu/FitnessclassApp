@@ -2,71 +2,58 @@
     {
         "id": 1,
         "name":"James",
-        "image": "src/images/Male_Instructor_1.jpg",
-        "speciality": "cardio",
-        "muscles": "abdominals"
+        "image": "/Images/Male_Instructor_1.jpg",
+        "speciality": "Cardio",
+        "muscles": "Abdominals, Quadriceps"
     },
     {
         "id": 2,
-        "name": "Oliver",
-        "image": "src/images/Male_Instructor_2.jpg",
-        "speciality": "olympic_weightlifting",
-        "muscles": "quadriceps"
+        "name": "Leila",
+        "image": "/Images/Female_Instructor_1.jpg",
+        "speciality": "Cardio",
+        "muscles": "Abdominals"
     },
     {
         "id": 3,
-        "name":"Nathan",
-        "image":"src/images/Male_Instructor_3.jpg",
-        "speciality":"strength",
-        "muscles": "biceps"
+        "name": "Oliver",
+        "image": "/Images/Male_Instructor_2.jpg",
+        "speciality": "Olympic_weightlifting",
+        "muscles": "Quadriceps, Glutes"
     },
     {
         "id": 4,
-        "name":"Charlie",
-        "image":"src/images/Male_Instructor_4.jpg",
-        "speciality":"strength",
-        "muscles":"hamstrings"
+        "name": "Sophia",
+        "image": "/Images/Female_Instructor_2.jpg",
+        "speciality": "Strength",
+        "muscles": "Glutes"
     },
     {
         "id": 5,
-        "name": "Ryan",
-        "image": "src/images/Male_Instructor_5.jpg",
-        "speciality": "olympic_weightlifting",
-        "muscles": "chest"
+        "name":"Nathan",
+        "image":"/Images/Male_Instructor_3.jpg",
+        "speciality":"Strength",
+        "muscles": "Biceps, Hamstrings"
     },
     {
         "id": 6,
-        "name": "Leila",
-        "image": "src/images/Female_Instructor_1.jpg",
-        "speciality": "cardio",
-        "muscles": "abdominals"
+        "name": "Emily",
+        "image": "/Images/Female_Instructor_3.jpg",
+        "speciality": "Stretching",
+        "muscles": "Calves"
     },
     {
         "id": 7,
-        "name": "Sophia",
-        "image": "src/images/Female_Instructor_2.jpg",
-        "speciality": "strength",
-        "muscles": "glutes"
+        "name": "Ryan",
+        "image": "/Images/Male_Instructor_5.jpg",
+        "speciality": "Olympic_weightlifting, Strength",
+        "muscles": "Chest"
     },
+   
     {
         "id": 8,
-        "name": "Emily",
-        "image": "src/images/Female_Instructor_3.jpg",
-        "speciality": "stretching",
-        "muscles": "calves"
-    },
-    {
-        "id": 9,
-        "name": "Ella",
-        "image": "src/images/Female_Instructor_4.jpg",
-        "speciality": "plyometrics",
-        "muscles": "forearms"
-    },
-    {
-        "id": 10,
         "name": "Ivy",
-        "image": "src/images/Female_Instructor_5.jpg",
-        "speciality": "powerlifting",
-        "muscles": "lower_back"
+        "image": "/Images/Female_Instructor_5.jpg",
+        "speciality": "Powerlifting, Plyometrics",
+        "muscles": "Lower back, Forearms"
     }
 ]

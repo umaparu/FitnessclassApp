@@ -1,19 +1,27 @@
 import React from "react";
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import "./Instructors.css";
+
 
 function Instructors(props) {
     return (
         <div>
-            <div className="card mb-3">
-                <img src={props.image} className="card-img-top" alt={props.name} />
-                <div className="card-body">
-                    <h4 className="card-title">Your Fitness Instructor</h4>
-                    <h5 className="card-text">Meet your fitness instructor, {props.name}. </h5>
-                    <p className="card-text">Your instructor's speciality is {props.speciality} and they are skilled in working out {props.muscle} muscles</p>
-                </div>
+            <div className="row">
+                <Card style={{ width: '18rem' }}>
+                    <Card.Img variant="top" className="card-img-top" src={props.image} alt="Image" />
+                    <Card.Body>
+                        <Card.Title><h3>{props.name}</h3></Card.Title>
+                        <Card.Text>
+                            <p><strong>Speciality: </strong>{props.speciality}</p>
+                            <p><strong>Muscle: </strong>{props.muscles} </p>
+                        </Card.Text>
+                        <Button variant="primary">Contact {props.name} </Button>
+                    </Card.Body>
+                </Card>
             </div>
         </div>
-    );
+    )
 }
 
 export default Instructors;
