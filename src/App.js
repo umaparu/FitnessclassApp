@@ -12,16 +12,16 @@ import Logout from './components/Logout';
 function App() {
   return (
     <BrowserRouter>
-          <Navbar/>
-        <Routes>
-          <Route path="/" element={<Layout/>}></Route>
-            <Route index element={<Home/>}/> 
-            <Route path='user' element={<User/>}></Route>   
-            <Route path='login' element={<Login/>}></Route> 
-            <Route path='aboutus' element={<About/>}></Route>        
-            <Route path='logout' element={<Logout/>}></Route>            
-        </Routes>
-      </BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Layout />}></Route>
+        <Route index element={<Home />} />
+        <Route path='user' element={<User />}></Route>
+        <Route path='login' element={<Login />}></Route>
+        <Route path='aboutus' element={<About />}></Route>
+        <Route path='logout' element={<Logout />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

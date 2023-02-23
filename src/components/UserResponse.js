@@ -13,7 +13,7 @@ function UserResponse() {
                         <Card.Title>Cardio</Card.Title>
                         <Card.Text>
                             Speciality: Cardio
-                            Muscle Group: 
+                            Muscle Group:
                         </Card.Text>
                         <Button variant="primary">Find Instructor</Button>
                     </Card.Body>
@@ -56,9 +56,9 @@ function UserResponse() {
                         <Button variant="primary">Find Instructor</Button>
                     </Card.Body>
                 </Card>
-                </div>
+            </div>
 
-                <div className="row">
+            <div className="row">
                 <Card style={{ width: '18rem' }}>
                     <Card.Img variant="top" src="/Images/Pylometrics.jpg" />
                     <Card.Body>
@@ -70,9 +70,9 @@ function UserResponse() {
                         <Button variant="primary">Find Instructor</Button>
                     </Card.Body>
                 </Card>
-           
 
-            
+
+
                 <Card style={{ width: '18rem' }}>
                     <Card.Img variant="top" src="/Images/PowerLifting.jpg" />
                     <Card.Body>

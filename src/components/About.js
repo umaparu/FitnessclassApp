@@ -11,17 +11,17 @@ const About = () => {
         <>
             <InstructorHeader />
             <div className="d-flex justify-content-around trainers">
-            {
-                instructors.map(instructor => (
-                    <Instructors
-                        id={instructor.id}
-                        name={instructor.name}
-                        image={instructor.image}
-                        speciality={instructor.speciality}
-                        muscles={instructor.muscles}
-                    />
-                ))}
-                </div>
+                {
+                    instructors.map(instructor => (
+                        <Instructors
+                            id={instructor.id}
+                            name={instructor.name}
+                            image={instructor.image}
+                            speciality={instructor.speciality}
+                            muscles={instructor.muscles}
+                        />
+                    ))}
+            </div>
         </>
     )
 }
