@@ -2,7 +2,7 @@
 The fitness application is developed to help users acheive their workout and fitness goals. It can be particularly useful for users who are looking to improve their wellness and connect with other fitness enthusiasts and trainers in their neighbourhood
 
 ## Screenshot
-/Images/Functional_Site_image.JPG
+https://github.com/umaparu/fitnessclassapp/blob/main/public/Images/Functional_Site_image.JPG
 
 ## The application
 The application works by allowing users to enter in details on the target areas they are trying to exercise. The application will use a third party API to search for possible work out routines the user can implement to address their workout goals. 
