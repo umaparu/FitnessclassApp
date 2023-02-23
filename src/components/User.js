@@ -7,7 +7,7 @@ const Exercise = (props) => {
 
     const saveExercise = () => {
         let getExercise = JSON.parse(localStorage.getItem("exercises"));
-        if(getExercise){
+        if (getExercise) {
             getExercise.push(myWorkout);
             localStorage.setItem("exercises", JSON.stringify(getExercise))
         }
@@ -26,7 +26,7 @@ const Exercise = (props) => {
         instructions: props.instructions
     }
 
-    return(
+    return (
 
         <div className="exercise">
             <p>Exercise Name: {props.name}</p>
@@ -44,15 +44,15 @@ const Exercise = (props) => {
 // key={exerciseList.indexOf(item)} name={item.name} type={item.type} muscle={item.muscle} difficulty={item.difficulty} equipment={item.equipment} instructions={item.instructions}
 
 const ExerciseEntry = (props) => {
-    return(
-    <div className="exercise-list">
+    return (
+        <div className="exercise-list">
             <p>Exercise Name: {props.name}</p>
             <p>Exercise Type: {props.type}</p>
             <p>Muscle Worked: {props.muscle}</p>
             <p>Difficulty: {props.difficulty}</p>
             <p>Equipment: {props.equipment}</p>
             <p> Exercise Instructions: {props.instructions}</p>
-    </div>
+        </div>
     )
 }
 
@@ -60,8 +60,8 @@ const Workout = () => {
 
     let exerciseList = JSON.parse(localStorage.getItem('exercises'))
     console.log(exerciseList)
-    if(exerciseList) {
-        return <div>{exerciseList.map((item) => {return <ExerciseEntry key={exerciseList.indexOf(item)} name={item.name} type={item.type} muscle={item.muscle} difficulty={item.difficulty} equipment={item.equipment} instructions={item.instructions}/>})}</div>
+    if (exerciseList) {
+        return <div>{exerciseList.map((item) => { return <ExerciseEntry key={exerciseList.indexOf(item)} name={item.name} type={item.type} muscle={item.muscle} difficulty={item.difficulty} equipment={item.equipment} instructions={item.instructions} /> })}</div>
     }
     else {
         return <div>No exercises</div>
@@ -72,17 +72,17 @@ const Workout = () => {
 
 const User = () => {
 
-    let[workoutRequested, setWorkoutRequested] = useState()
+    let [workoutRequested, setWorkoutRequested] = useState()
 
-    let[chosenExercise, setExercise] = useState()
+    let [chosenExercise, setExercise] = useState()
 
     const myKey = 'bt50vyiLQ7ygw35ST1J2vA==zawAz9jO5G3NBXT5'
 
-    let[isDisplayed, setDisplayed] = useState(false);
+    let [isDisplayed, setDisplayed] = useState(false);
 
     const displayWorkout = () => {
 
-        if(isDisplayed) {
+        if (isDisplayed) {
             setDisplayed(false)
         }
         else {
@@ -102,41 +102,47 @@ const User = () => {
         let options = {
             method: 'GET',
             headers: { 'x-api-key': myKey }
-          }
-          
-          let url = `https://api.api-ninjas.com/v1/exercises?muscle=${exerciseSelected}`
+        }
 
-          console.log(url)
-          
-          
-          fetch(url,options)
-                .then(res => res.json()) // parse response as JSON
-                .then(data => {
-                  console.log(data)
-                  setWorkoutRequested(data)
-                })
-                .catch(err => {
-                    console.log(`error ${err}`)
-                });
+        let url = `https://api.api-ninjas.com/v1/exercises?muscle=${exerciseSelected}`
+
+        console.log(url)
+
+
+        fetch(url, options)
+            .then(res => res.json()) // parse response as JSON
+            .then(data => {
+                console.log(data)
+                setWorkoutRequested(data)
+            })
+            .catch(err => {
+                console.log(`error ${err}`)
+            });
 
     }
 
 
     return (
         <>
-            <button onClick={displayWorkout} className="display-workout">Display my workout</button>
-            {isDisplayed ? <Workout/> : " "}
+
+            {isDisplayed ? <Workout /> : " "}
+            <div className="userInstruction">
+                <h3>Select a workout to perform</h3>
+            </div>
             <form className="search-form">
-            <input type="radio" id="biceps" name="exercise" value="biceps"></input>
-            <label htmlFor="biceps">biceps</label><br></br>
-            <input type="radio" id="cardio" name="exercise" value="calves"></input>
-            <label htmlFor="cardio">calves</label><br></br>
-            <input type="radio" id="powerlifting" name="exercise" value="triceps"></input>
-            <label htmlFor="powerlifting">triceps</label>
+                <input type="radio" id="biceps" name="exercise" value="biceps"></input>
+                <label htmlFor="biceps">biceps</label><br></br>
+                <input type="radio" id="cardio" name="exercise" value="calves"></input>
+                <label htmlFor="cardio">calves</label><br></br>
+                <input type="radio" id="powerlifting" name="exercise" value="triceps"></input>
+                <label htmlFor="powerlifting">triceps</label>
+            </form>
             <button onClick={handleRequest} className="search-button">Search</button>
 
-            </form>
-            {workoutRequested ? workoutRequested.map((item) => {return <Exercise key={workoutRequested.indexOf(item)} name={item.name} type={item.type} muscle={item.muscle} difficulty={item.difficulty} equipment={item.equipment} instructions={item.instructions} />}) : ""}
+            <button onClick={displayWorkout} className="display-workout">Display my workout</button>
+
+
+            {workoutRequested ? workoutRequested.map((item) => { return <Exercise key={workoutRequested.indexOf(item)} name={item.name} type={item.type} muscle={item.muscle} difficulty={item.difficulty} equipment={item.equipment} instructions={item.instructions} /> }) : ""}
         </>
     )
 

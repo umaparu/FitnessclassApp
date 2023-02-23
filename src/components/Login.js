@@ -76,7 +76,7 @@ const Login = () => {
                 <input id="email"></input>
                 <label htmlFor="password">Password</label>
                 <input id="password"></input>
-                <button id="sign-up" onClick={handlesubmitSignup}>submit</button>
+                <button id="sign-up" onClick={handlesubmitSignup} className="submit-button">submit</button>
             </form>
 
             </div> : ""}
@@ -90,7 +90,7 @@ const Login = () => {
                 <input id="email-si"></input>
                 <label htmlFor="password-si">Password</label>
                 <input id="password-si"></input>
-                <button onClick={handlesubmitLogin}>submit</button>
+                <button onClick={handlesubmitLogin} className="submit-button">submit</button>
             </form>
 
             </div>}
