@@ -104,7 +104,7 @@ function Greeting(props) {
             <div className="planbox">
                 <p className="plantext"> Select your instructor !...</p>
                 <div>
-                    <button className="btn btn-light btn-lg" onClick={handleClick}>Select an instructor</button>
+                    <button className="btn btn-light btn-lg" onClick={handleClick}>Select Workout</button>
                     <p className="plantext">{content}</p>
                 </div>
         </div>
@@ -120,8 +120,8 @@ function Greeting(props) {
     const [content2, setContent2] = useState("");
 
     const variants = {
-        visible: { y: 0 },
-        hidden: { y: '-100%' }
+        visible: { x: 0 },
+        hidden: { x: '-100%' }
       };
   
     /*

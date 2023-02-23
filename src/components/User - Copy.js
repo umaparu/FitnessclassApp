@@ -9,11 +9,8 @@ else show user profile with options to change details
 
 */
 
-
 const USER_STORAGE_KEY="GYM_SQUAD_USERS";
 const NINJA_KEY="XZJKWu8P021vYpDM4ulaHA==bu8C9RGKvivdGFg3";
-
-
 
 function User() {
    //localStorage.removeItem(USER_STORAGE_KEY);

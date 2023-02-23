@@ -1,6 +1,5 @@
 import Accounts from "./Accounts/Accounts"
 
-
 const About = () => {
 
     return (
