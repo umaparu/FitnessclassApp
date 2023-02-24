@@ -35,8 +35,9 @@ Should users be interested, details on workout trainers will also be made availa
 
 ## Deployment Link 
 
-Deployed application Link : https://cheery-gnome-28f0a7.netlify.app/
-Github URL : https://github.com/umaparu/fitnessclassapp
+<h4>Deployed application Link :</h4> https://cheery-gnome-28f0a7.netlify.app/   
+
+<h4>Github URL :</h4> https://github.com/umaparu/fitnessclassapp
 
 ## Getting Started
 To use this application, follow the below steps:
