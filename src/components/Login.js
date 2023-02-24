@@ -13,6 +13,10 @@ const USER_OBJECT = "USER_OBJECT";
 
 let alertMsg="";
 
+const location = {
+    pathname: '/',
+    state: { fromDashboard: true }
+  }
 
 function Login() {
      console.log(  localStorage.getItem(USER_STORAGE_KEY ));
@@ -59,6 +63,8 @@ class LoginForm extends React.Component {
                     if (password1.trim() == usrObj.password.trim()) {
                         this.status= USER_LOGGED_IN;
                         window.sessionStorage.setItem(USER_OBJECT, JSON.stringify(usrObj));
+                        this.props.history.push(location);
+                        this.props.history.replace(location);
                         break;
                     } else {
                         this.status= WRONG_PASSWORD;
