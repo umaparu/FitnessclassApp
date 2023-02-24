@@ -19,7 +19,7 @@ const location = {
   }
 
 function Login() {
-     console.log(  localStorage.getItem(USER_STORAGE_KEY ));
+    // console.log(  localStorage.getItem(USER_STORAGE_KEY ));
   // window.sessionStorage.removeItem(USER_OBJECT );
    return (<LoginForm  />);
  }
@@ -32,7 +32,7 @@ class LoginForm extends React.Component {
 
         let usrObj = window.sessionStorage.getItem(USER_OBJECT ); 
         if (usrObj != null) {
-            console.log(usrObj);
+           // console.log(usrObj);
             this.status= USER_LOGGED_IN;
     }
 }
@@ -59,7 +59,7 @@ class LoginForm extends React.Component {
                         lcaseStr =  lcaseStr + '}';
                     } 
                     usrObj = JSON.parse(lcaseStr);
-                   console.log(usrObj);
+                  // console.log(usrObj);
                     if (password1.trim() == usrObj.password.trim()) {
                         this.status= USER_LOGGED_IN;
                         window.sessionStorage.setItem(USER_OBJECT, JSON.stringify(usrObj));

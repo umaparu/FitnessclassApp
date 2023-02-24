@@ -23,7 +23,7 @@ const Navbar = () => {
     if (usrObj != null) {
        // console.log(usrObj);
         let usrObj1 = JSON.parse(usrObj);
-        console.log(usrObj1);
+        //console.log(usrObj1);
         userText = usrObj1.firstname; 
         linkRef ="/workout";
 
