@@ -25,7 +25,7 @@ const Jumbotron = (props) => {
 
     if (usrObj != null) {
         let usrObj1 = JSON.parse(usrObj);
-        console.log(usrObj1);
+        //console.log(usrObj1);
         userText = usrObj1.firstname; 
         isLoggedIn=true;
 

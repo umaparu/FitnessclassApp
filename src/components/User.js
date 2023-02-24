@@ -125,7 +125,7 @@ class UserForm extends React.Component {
             }
         } 
 
-        console.log(userStatus);
+        //console.log(userStatus);
         return userStatus;
     }   
 

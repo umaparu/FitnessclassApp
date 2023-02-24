@@ -59,7 +59,7 @@ const ExerciseEntry = (props) => {
 const Workout = () => {
 
     let exerciseList = JSON.parse(localStorage.getItem('exercises'))
-    console.log(exerciseList)
+    //console.log(exerciseList)
     if (exerciseList) {
         return <div>{exerciseList.map((item) => { return <ExerciseEntry key={exerciseList.indexOf(item)} name={item.name} type={item.type} muscle={item.muscle} difficulty={item.difficulty} equipment={item.equipment} instructions={item.instructions} /> })}</div>
     }
@@ -95,7 +95,7 @@ const UserWorkout = () => {
         event.preventDefault();
 
         let exerciseSelected = document.querySelector('input[name="exercise"]:checked').value
-        console.log(exerciseSelected)
+        //console.log(exerciseSelected)
         setExercise(exerciseSelected);
 
         let options = {
@@ -105,13 +105,13 @@ const UserWorkout = () => {
 
         let url = `https://api.api-ninjas.com/v1/exercises?muscle=${exerciseSelected}`
 
-        console.log(url)
+        //console.log(url)
 
 
         fetch(url, options)
             .then(res => res.json()) // parse response as JSON
             .then(data => {
-                console.log(data)
+                //console.log(data)
                 setWorkoutRequested(data)
             })
             .catch(err => {
