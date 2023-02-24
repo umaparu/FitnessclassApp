@@ -1,8 +1,32 @@
 # Gym Squad Fitness Application 
 The fitness application is developed to help users acheive their workout and fitness goals. It can be particularly useful for users who are looking to improve their wellness and connect with other fitness enthusiasts and trainers in their neighbourhood
 
-## Screenshot
-https://github.com/umaparu/fitnessclassapp/blob/main/public/Images/Functional_Site_image.JPG
+## Screenshots
+
+<h4>Home Page</h4>   
+
+![Home Page ](public/screenshots/home.png)   
+
+<h4>Sign Up Page </h4>  
+
+![Sign Up Page ](public/screenshots/reg.png)   
+
+<h4>Login Page </h4>  
+
+![Login Page ](public/screenshots/login.png)   
+
+<h4>Logged in user home page </h4>  
+
+![Logged in user home page ](public/screenshots/loggedin.png)   
+
+<h4>Instructors Page </h4>  
+
+![Instructors Page ](public/screenshots/instr.png)   
+
+<h4>Workout Details Page </h4>  
+
+![Workout Details Page ](public/screenshots/workout.png)   
+
 
 ## The application
 The application works by allowing users to enter in details on the target areas they are trying to exercise. The application will use a third party API to search for possible work out routines the user can implement to address their workout goals. 
@@ -10,7 +34,10 @@ The APIs will compare the targeted areas to be exercised against a database of w
 Should users be interested, details on workout trainers will also be made available to help advise on any concerns, and user inquiries 
 
 ## Deployment Link 
-Here is the link to the completed application: <Link>
+
+<h4>Deployed application Link :</h4> https://cheery-gnome-28f0a7.netlify.app/   
+
+<h4>Github URL :</h4> https://github.com/umaparu/fitnessclassapp
 
 ## Getting Started
 To use this application, follow the below steps:
