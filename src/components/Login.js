@@ -4,6 +4,7 @@ import React from 'react';
 import Jumbotron from "./Jumbotron/Jumbotron"
 
 import { useNavigate } from "react-router-dom";
+import { withRouter } from 'react-router';
 
 
 const USER_STORAGE_KEY="GYM_SQUAD_USERS";
@@ -23,7 +24,7 @@ const Login = () => {
 }
 */
 
-function Login(props) {
+function Login() {
      console.log(  localStorage.getItem(USER_STORAGE_KEY ));
   // window.sessionStorage.removeItem(USER_OBJECT );
    return (<LoginForm  />);
@@ -80,7 +81,8 @@ class LoginForm extends React.Component {
                     if (password1.trim() == usrObj.password.trim()) {
                         this.status= USER_LOGGED_IN;
                         window.sessionStorage.setItem(USER_OBJECT, JSON.stringify(usrObj));
-                        this.props.history.push('/')
+                        //this.props.history.push('/');
+                        this.props.history.replace('/');
                         break;
                        // alert("LOgged in" + this.status);
                     } else {
@@ -97,7 +99,8 @@ class LoginForm extends React.Component {
             }
            // console.log(strArr, email1, password1);
         } else {
-            alert("NO REGISTERED USERS....");
+            //alert("NO REGISTERED USERS....");
+            alertMsg = "NO REGISTERED USERS...";
         }
     }
 

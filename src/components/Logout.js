@@ -10,14 +10,15 @@ const USER_OBJECT = "USER_OBJECT";
 
 function Logout() {
 
-  
-  let usrObj = window.sessionStorage.getItem(USER_OBJECT );
-  window.sessionStorage.removeItem(USER_OBJECT );
-
-  const variants = {
+    const variants = {
     visible: { x: 0 },
     hidden: { x: '-100%' }
   };
+
+
+  let usrObj = window.sessionStorage.getItem(USER_OBJECT );
+  window.sessionStorage.removeItem(USER_OBJECT );
+
 
   return (
     <motion.div
