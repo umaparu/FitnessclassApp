@@ -34,7 +34,9 @@ The APIs will compare the targeted areas to be exercised against a database of w
 Should users be interested, details on workout trainers will also be made available to help advise on any concerns, and user inquiries 
 
 ## Deployment Link 
-Here is the link to the completed application: <Link>
+
+Deployed application Link : https://cheery-gnome-28f0a7.netlify.app/
+Github URL : https://github.com/umaparu/fitnessclassapp
 
 ## Getting Started
 To use this application, follow the below steps:
