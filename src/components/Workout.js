@@ -95,7 +95,7 @@ const UserWorkout = () => {
         event.preventDefault();
 
         let exerciseSelected = document.querySelector('input[name="exercise"]:checked').value
-        //(exerciseSelected)
+        //console.log(exerciseSelected)
         setExercise(exerciseSelected);
 
         let options = {
@@ -105,17 +105,17 @@ const UserWorkout = () => {
 
         let url = `https://api.api-ninjas.com/v1/exercises?muscle=${exerciseSelected}`
 
-       // console.log(url)
+        //console.log(url)
 
 
         fetch(url, options)
             .then(res => res.json()) // parse response as JSON
             .then(data => {
-            //    console.log(data)
+                //console.log(data)
                 setWorkoutRequested(data)
             })
             .catch(err => {
-            //    console.log(`error ${err}`)
+                console.log(`error ${err}`)
             });
 
     }
