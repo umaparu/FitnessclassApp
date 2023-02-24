@@ -82,7 +82,7 @@ class LoginForm extends React.Component {
                         this.status= USER_LOGGED_IN;
                         window.sessionStorage.setItem(USER_OBJECT, JSON.stringify(usrObj));
                         //this.props.history.push('/');
-                        this.props.history.replace('/');
+                       // this.props.history.replace('/');
                         break;
                        // alert("LOgged in" + this.status);
                     } else {
