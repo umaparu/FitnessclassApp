@@ -81,8 +81,8 @@ class LoginForm extends React.Component {
                     if (password1.trim() == usrObj.password.trim()) {
                         this.status= USER_LOGGED_IN;
                         window.sessionStorage.setItem(USER_OBJECT, JSON.stringify(usrObj));
-                        //this.props.history.push('/');
-                       // this.props.history.replace('/');
+                        //this.props.history.push('/index.html');
+                        this.props.history.go('/');
                         break;
                        // alert("LOgged in" + this.status);
                     } else {

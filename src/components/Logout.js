@@ -19,7 +19,6 @@ function Logout() {
   let usrObj = window.sessionStorage.getItem(USER_OBJECT );
   window.sessionStorage.removeItem(USER_OBJECT );
 
-
   return (
     <motion.div
       variants={variants}
