@@ -8,6 +8,7 @@ import Navbar from './components/Navbar/Navbar';
 import About from './components/About';
 
 import Logout from './components/Logout';
+import UserWorkout from './components/Workout';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path='user' element={<User />}></Route>
         <Route path='login' element={<Login />}></Route>
+        <Route path='workout' element={<UserWorkout />}></Route>        
         <Route path='aboutus' element={<About />}></Route>
         <Route path='logout' element={<Logout />}></Route>
       </Routes>

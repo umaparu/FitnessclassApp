@@ -1,104 +1,135 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import React from 'react';
+import Jumbotron from "./Jumbotron/Jumbotron"
 
-const Login = () => {
 
-    let [isCorrectLogin, setLogin] = useState(true)
 
-    let [isSignedUp, setIsSignedUp] = useState(true)
+const USER_STORAGE_KEY="GYM_SQUAD_USERS";
+const USER_NOT_FOUND="USER_NOT_FOUND";
+const WRONG_PASSWORD="WRONG_PASSWORD";
+const USER_FOUND="USER_FOUND";
+const USER_LOGGED_IN ="USER_LOGGED_IN";
+const USER_OBJECT = "USER_OBJECT";
 
-    let [isLoggedIn, setIsLoggedIn] = useState(false)
+let alertMsg="";
 
-    const handlesubmitSignup = (event) => {
-        event.preventDefault();
 
-        const name = document.getElementById("name").value
-        const email = document.getElementById("email").value
-        const password = document.getElementById("password").value
+function Login() {
+     console.log(  localStorage.getItem(USER_STORAGE_KEY ));
+  // window.sessionStorage.removeItem(USER_OBJECT );
+   return (<LoginForm  />);
+ }
 
-        let user = {
-            email: email,
-            name: name,
-            password: password
-        }
+class LoginForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {isSubmitted: false};
+        this.handleSubmit = this.handleSubmit.bind(this);
 
-        let userStr = JSON.stringify(user)
+        let usrObj = window.sessionStorage.getItem(USER_OBJECT ); 
+        if (usrObj != null) {
+            console.log(usrObj);
+            this.status= USER_LOGGED_IN;
+    }
+}
 
-        console.log(user)
-
-        localStorage.setItem("user", userStr)
-
-        setIsSignedUp(false)
-
+    validateResponses(event) {
+        return ;
     }
 
-    const handlesubmitLogin = (event) => {
-        event.preventDefault();
+    // Search if user exists then login
+    searchUser(userList, email1, password1) {
+        if (userList != null) {
 
-        let getLogin = JSON.parse(localStorage.getItem("user"));
-
-        const emailSi = document.getElementById("email-si").value
-        const passwordSi = document.getElementById("password-si").value
-
-        if (getLogin && (emailSi == getLogin.email) && (passwordSi == getLogin.password)) {
-
-            console.log(getLogin.email)
-
-            setIsLoggedIn(true)
-
-            localStorage.setItem("login", "true")
-
-
-
+            let strArr = userList.split("},");
+            let usrObj;
+            for (let i=0; i<strArr.length; i++ ) {
+                let str = strArr[i];
+                let lcaseStr=str.toLowerCase();
+                
+                let x= lcaseStr.indexOf(email1.toLowerCase().trim());
+                if (x !=-1) {
+                    this.status= USER_FOUND;
+                    
+                    if (lcaseStr.charAt(lcaseStr.length-1) !='}') {
+                        lcaseStr =  lcaseStr + '}';
+                    } 
+                    usrObj = JSON.parse(lcaseStr);
+                   console.log(usrObj);
+                    if (password1.trim() == usrObj.password.trim()) {
+                        this.status= USER_LOGGED_IN;
+                        window.sessionStorage.setItem(USER_OBJECT, JSON.stringify(usrObj));
+                        break;
+                    } else {
+                        this.status= WRONG_PASSWORD;
+                        alertMsg = "Please enter correct password..";
+                        break;
+                    }
+                } else {
+                    this.status= USER_NOT_FOUND;
+                    alertMsg = "User not registered..";
+                }
+            }
         } else {
-
-            setLogin(false)
-
+            alertMsg = "NO REGISTERED USERS...";
         }
-
-
-        const handleReload = () => {
-            window.location.reload()
-        }
-
-
-
     }
+    handleSubmit(event) {
+        this.validateResponses(event);
+        alertMsg="";
 
-    return (
-        <div className="m-3 styling">
-            {isSignedUp ? <div>
-                <h2>Sign Up</h2>
-                <form className="d-flex flex-column">
-                    <label htmlFor="name">Name</label>
-                    <input id="name"></input>
-                    <label htmlFor="email">e-mail</label>
-                    <input id="email"></input>
-                    <label htmlFor="password">Password</label>
-                    <input id="password"></input>
-                    <button id="sign-up" onClick={handlesubmitSignup} className="submit-button">submit</button>
-                </form>
+        let email1= event.target.inputEmail.value;
+        let password1= event.target.inputPassword.value;
 
-            </div> : ""}
+        let userList=localStorage.getItem(USER_STORAGE_KEY);
+        this.searchUser(userList, email1, password1);
 
-            {isLoggedIn ? <button onClick={() => { window.location.reload() }}><Link to="/">Go back to homepage</Link></button> : <div>
+        this.setState({isSubmitted: true});
+        event.preventDefault();
+    }
+      
+ 
+    render() {
+        if (this.status==USER_LOGGED_IN) {
+            return(
+                <div className="wrapper">
+                <Jumbotron/>
+            </div>
+      
+      );
+        } else 
+      return (
+   <div className="jumbotron jumbotron-fluid ">
 
-                <h2>Sign in</h2>
-                <p>{isCorrectLogin ? " " : "Wrong Login details"}</p>
-                <form id="sign-in" className="d-flex flex-column">
-                    <label htmlFor="email-si">e-mail</label>
-                    <input id="email-si"></input>
-                    <label htmlFor="password-si">Password</label>
-                    <input id="password-si"></input>
-                    <button onClick={handlesubmitLogin} className="submit-button">submit</button>
-                </form>
-
-            </div>}
-
-
+    <div id="reg-heading" className="container w-25  float-right">
+        <div id="messageDiv" className="text-danger">{alertMsg}</div>
+    <form onSubmit={this.handleSubmit}>
+    <div className="form-row">
+        <div className="form-group">
+            <label className="text-light" htmlFor="inputEmail">Email Address</label>
+            <input type="email" className="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter Email address" required/>
         </div>
-    )
+    </div>
+    <div className="form-row">
+        <div className="form-group">
+            <label className="text-light" htmlFor="inputPassword">Password</label>
+            <input type="password" className="form-control" id="inputPassword" placeholder="Password" required/>
+        </div>
+    </div>
+    <button type="submit" className="btn btn-primary">Login</button>
+    </form>
+    </div>
 
+    <div className="container-fluid">
+        <div className="planbox">
+        <p className=" plantext"> New to the fitness? Or just tired of developing your own workout plan?</p>
+        <p className=" plantext"> Click below to generate your own personalised plan!</p>
+        <Link role="button" className="btn btn-primary btn-lg" to="/user">Get Started</Link>
+        </div>
+    </div>
+</div>
+      );
+    }
 }
 
 export default Login;
