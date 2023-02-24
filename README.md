@@ -2,7 +2,7 @@
 The fitness application is developed to help users acheive their workout and fitness goals. It can be particularly useful for users who are looking to improve their wellness and connect with other fitness enthusiasts and trainers in their neighbourhood
 
 ## Screenshot
-![image of completed application](url:)
+https://github.com/umaparu/fitnessclassapp/blob/main/public/Images/Functional_Site_image.JPG
 
 ## The application
 The application works by allowing users to enter in details on the target areas they are trying to exercise. The application will use a third party API to search for possible work out routines the user can implement to address their workout goals. 
@@ -10,7 +10,7 @@ The APIs will compare the targeted areas to be exercised against a database of w
 Should users be interested, details on workout trainers will also be made available to help advise on any concerns, and user inquiries 
 
 ## Deployment Link 
-Here is the link to the completed application: <Insert Link here>
+Here is the link to the completed application: <Link>
 
 ## Getting Started
 To use this application, follow the below steps:
@@ -25,4 +25,4 @@ To use this application, follow the below steps:
 - A modern web browser is recommended for the best user experience 
 
 ## Credits
-This fitness app was developed by Charlie, Christiana,Steva, Uma and Rashford. The application used a third party API to search for workout and gym details. Thank you to [*insert API names here] for their valuable contribution to this project. 
+This fitness app was developed by Charlie, Christiana,Uma, Steva and Rashford. The application used a third party API to search for workout and gym details. Thank you to Rapid API for their valuable contribution to this project. 

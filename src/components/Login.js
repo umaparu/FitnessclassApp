@@ -1,10 +1,7 @@
 import { Link } from "react-router-dom";
-import styles from "./Jumbotron/Jumbotron.css";
 import React from 'react';
 import Jumbotron from "./Jumbotron/Jumbotron"
 
-import { useNavigate } from "react-router-dom";
-import { withRouter } from 'react-router';
 
 
 const USER_STORAGE_KEY="GYM_SQUAD_USERS";
@@ -16,13 +13,6 @@ const USER_OBJECT = "USER_OBJECT";
 
 let alertMsg="";
 
-/*
-const Login = () => {
-        console.log(  localStorage.getItem(USER_STORAGE_KEY ));
-        return (<LoginForm  />);
-
-}
-*/
 
 function Login() {
      console.log(  localStorage.getItem(USER_STORAGE_KEY ));
@@ -30,27 +20,19 @@ function Login() {
    return (<LoginForm  />);
  }
 
-
-
 class LoginForm extends React.Component {
-    
-
     constructor(props) {
-      super(props);
-      this.state = {isSubmitted: false};
-      this.handleSubmit = this.handleSubmit.bind(this);
+        super(props);
+        this.state = {isSubmitted: false};
+        this.handleSubmit = this.handleSubmit.bind(this);
 
-      let usrObj = window.sessionStorage.getItem(USER_OBJECT ); 
-      if (usrObj != null) {
-          console.log(usrObj);
-         // alert("user found");
-          this.status= USER_LOGGED_IN;
-
-      }
-
+        let usrObj = window.sessionStorage.getItem(USER_OBJECT ); 
+        if (usrObj != null) {
+            console.log(usrObj);
+            this.status= USER_LOGGED_IN;
     }
+}
 
-    // TODO - validate the responses
     validateResponses(event) {
         return ;
     }
@@ -61,19 +43,15 @@ class LoginForm extends React.Component {
 
             let strArr = userList.split("},");
             let usrObj;
-            //searchUser(strArr, email1, password1);
-
             for (let i=0; i<strArr.length; i++ ) {
                 let str = strArr[i];
                 let lcaseStr=str.toLowerCase();
                 
-                //console.log(lcaseStr);
                 let x= lcaseStr.indexOf(email1.toLowerCase().trim());
                 if (x !=-1) {
                     this.status= USER_FOUND;
                     
                     if (lcaseStr.charAt(lcaseStr.length-1) !='}') {
-                        //alert(lcaseStr.charAt(lcaseStr.length-1));
                         lcaseStr =  lcaseStr + '}';
                     } 
                     usrObj = JSON.parse(lcaseStr);
@@ -81,30 +59,21 @@ class LoginForm extends React.Component {
                     if (password1.trim() == usrObj.password.trim()) {
                         this.status= USER_LOGGED_IN;
                         window.sessionStorage.setItem(USER_OBJECT, JSON.stringify(usrObj));
-                        //this.props.history.push('/index.html');
-                        this.props.history.go('/');
                         break;
-                       // alert("LOgged in" + this.status);
                     } else {
                         this.status= WRONG_PASSWORD;
                         alertMsg = "Please enter correct password..";
                         break;
-                        //alert("Wrong password");
                     }
                 } else {
-                    //alert("zzzzzzzzzzzLOgged in" + this.status);
                     this.status= USER_NOT_FOUND;
                     alertMsg = "User not registered..";
                 }
             }
-           // console.log(strArr, email1, password1);
         } else {
-            //alert("NO REGISTERED USERS....");
             alertMsg = "NO REGISTERED USERS...";
         }
     }
-
-    // Handle the Form SUbmit
     handleSubmit(event) {
         this.validateResponses(event);
         alertMsg="";
@@ -121,15 +90,7 @@ class LoginForm extends React.Component {
       
  
     render() {
-        //alert("LOGGED IN " + this.status);
-       // alert('state value: ' + this.state.isSubmitted);
-       /* if (this.state.isSubmitted) {
-           
-            return(
-      <p>User registration successful. Please login.</p>);
-        } else */
         if (this.status==USER_LOGGED_IN) {
-           // alert(this.status);
             return(
                 <div className="wrapper">
                 <Jumbotron/>

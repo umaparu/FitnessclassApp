@@ -4,6 +4,8 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faHouse } from '@fortawesome/free-solid-svg-icons';
 import { faDumbbell } from '@fortawesome/free-solid-svg-icons';
+import React, { useState, useEffect } from 'react';
+
 import styles from "./Navbar.css";
 library.add(faUser, faHouse, faDumbbell);
 
@@ -14,20 +16,20 @@ const USER_OBJECT = "USER_OBJECT";
 let usrObj = window.sessionStorage.getItem(USER_OBJECT );
 
 const Navbar = () => {
-
-    
-   // let usrObj = window.sessionStorage.getItem(USER_OBJECT );
-   
-
+ 
     let userText;
+    let linkRef;
 
     if (usrObj != null) {
        // console.log(usrObj);
         let usrObj1 = JSON.parse(usrObj);
         console.log(usrObj1);
         userText = usrObj1.firstname; 
+        linkRef ="/workout";
+
     } else {
         userText = "Login/Signup";
+        linkRef ="/login";
     }
 
 
@@ -43,7 +45,7 @@ const Navbar = () => {
                             <FontAwesomeIcon icon="house" />
                             <span>Home</span>
                         </li></Link>
-                        <Link to="/login"> <li className="nav-item d-flex align-items-center py-0">
+                        <Link to={linkRef}> <li className="nav-item d-flex align-items-center py-0">
                             
                             <FontAwesomeIcon icon="user" />
                             <span>{userText}</span>

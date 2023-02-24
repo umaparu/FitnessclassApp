@@ -4,20 +4,20 @@ export const activities = [{
   name: 'cardio'
 }, {
   id: 1,
-  name: 'olympic_weightlifting'  
+  name: 'olympic_weightlifting'
 }, {
   id: 2,
-  name: 'plyometrics'  
+  name: 'plyometrics'
 }, {
   id: 3,
-  name: 'powerlifting'  
-},  {
+  name: 'powerlifting'
+}, {
   id: 4,
-  name: 'strength'  
+  name: 'strength'
 }, {
   id: 5,
-  name: 'stretching'  
-},{
+  name: 'stretching'
+}, {
   id: 6,
-  name: 'strongman'  
+  name: 'strongman'
 }];
